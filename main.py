@@ -9,6 +9,7 @@ import pandas as pd
 import random
 import smtplib
 MY_EMAIL = os.environ.get("MY_EMAIL")
+DST_EMAIL = os.environ.get("DST_EMAIL")
 MY_PASSWORD = os.environ.get("MY_PASSWORD")
 today = dt.date.today()
 print(today.month, today.day)
@@ -35,7 +36,7 @@ for i in range(birthdays.shape[0]):
             connection.starttls()
             connection.login(MY_EMAIL, MY_PASSWORD)
             connection.sendmail(from_addr=MY_EMAIL,
-                                to_addrs="mohamed.moneib.98@gmail.com",
+                                to_addrs=DST_EMAIL,
                                 msg=f"Subject:Happy Birthday!\n\n{modified_contents}")
 
 
