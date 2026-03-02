@@ -8,8 +8,8 @@ import datetime as dt
 import pandas as pd
 import random
 import smtplib
-my_email = "myxacc12345@gmail.com"
-password = "izytdpwmtabhspkv"
+MY_EMAIL = os.environ.get("MY_EMAIL")
+MY_PASSWORD = os.environ.get("MY_PASSWORD")
 today = dt.date.today()
 print(today.month, today.day)
 birth_dates = pd.read_csv('birthdays.csv')
@@ -33,8 +33,8 @@ for i in range(birthdays.shape[0]):
 
         with smtplib.SMTP('smtp.gmail.com', 587) as connection:
             connection.starttls()
-            connection.login(my_email, password)
-            connection.sendmail(from_addr=my_email,
+            connection.login(MY_EMAIL, MY_PASSWORD)
+            connection.sendmail(from_addr=MY_EMAIL,
                                 to_addrs="mohamed.moneib.98@gmail.com",
                                 msg=f"Subject:Happy Birthday!\n\n{modified_contents}")
 
